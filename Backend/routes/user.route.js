@@ -36,4 +36,6 @@ router.get("/getProfile", userMiddleware.AuthUser, userController.getProfile);
 
 router.get("/logout", userMiddleware.AuthUser, userController.logoutUser);
 
+router.get('/resend-otp', userController.resendOtp);
+
 module.exports = router;
