@@ -21,11 +21,9 @@ const TempUserSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
 });
+
+TempUserSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });
 
 const TempUser = mongoose.model("TempUser", TempUserSchema);
 module.exports = TempUser;
