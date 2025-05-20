@@ -83,6 +83,7 @@ const OTPVerification = () => {
         });
         setTimeout(() => {
           Navigate("/home");
+          localStorage.removeItem("email");
         }, 1000);
       }
     } catch (error) {
