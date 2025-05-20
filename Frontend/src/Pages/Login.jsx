@@ -7,17 +7,72 @@ import {
 } from "@heroicons/react/20/solid";
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AxiosInstance from "../Config/Axios";
+import { Bounce, toast } from "react-toastify";
 
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  const HandleForm = (e) => {
+  const Navigate = useNavigate();
+
+  const HandleForm = async (e) => {
     e.preventDefault();
-    console.log(email, password);
-    setemail("");
-    setpassword("");
+    try {
+      const response = await AxiosInstance.post("/users/login", {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        toast.success(response.data.msg, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+        setTimeout(() => {
+          Navigate("/home");
+        }, 1000);
+        setemail("");
+        setpassword("");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      const errors = error.response.data.errors;
+      if (
+        errors.forEach((e) => {
+          toast.error(e.msg, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+        })
+      );
+    }
   };
 
   return (
@@ -117,7 +172,7 @@ const Login = () => {
                   />
                 </div>
               </div>
-              
+
               <button
                 type="submit"
                 className="w-full cursor-pointer flex justify-center items-center py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"

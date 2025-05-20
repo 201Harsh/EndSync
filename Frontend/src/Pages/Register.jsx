@@ -7,19 +7,63 @@ import {
 } from "@heroicons/react/20/solid";
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AxiosInstance from "../Config/Axios";
+import { Bounce, toast } from "react-toastify";
 
 const Register = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  const HandleForm = (e) => {
+  const Navigate = useNavigate();
+
+  const HandleForm = async (e) => {
     e.preventDefault();
-    console.log(name, email, password);
-    setname("");
-    setemail("");
-    setpassword("");
+
+    try {
+      const response = await AxiosInstance.post("/users/register", {
+        name,
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        localStorage.setItem("email", response.data.email);
+        Navigate("/otp");
+        setname("");
+        setemail("");
+        setpassword("");
+      }
+    } catch (error) {
+      toast.error(error.response.data.error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+
+      const errors = error.response.data.errors;
+      if (
+        errors.forEach((e) => {
+          toast.error(e.msg, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+        })
+      );
+    }
   };
 
   return (
