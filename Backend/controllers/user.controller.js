@@ -60,6 +60,10 @@ module.exports.verifyandRegisterUser = async (req, res) => {
 
   const token = User.jwtToken();
 
+  res.cookie("token", token, {
+    httpOnly: true,
+  });
+
   return res.status(200).json({
     msg: "User registered successfully",
     User,
@@ -95,6 +99,10 @@ module.exports.loginUser = async (req, res) => {
   }
 
   const token = User.jwtToken();
+
+  res.cookie("token", token, {
+    httpOnly: true,
+  });
 
   return res.status(200).json({
     msg: "User logged in successfully",

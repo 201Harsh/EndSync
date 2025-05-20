@@ -32,4 +32,6 @@ router.post(
   userController.loginUser
 );
 
+router.get('/getProfile', userMiddleware.AuthUser, userController.getProfile);
+
 module.exports = router;
