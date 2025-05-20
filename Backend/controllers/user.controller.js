@@ -110,3 +110,18 @@ module.exports.loginUser = async (req, res) => {
     token,
   });
 };
+
+module.exports.getProfile = async (req, res) => {
+  const User = req.user;
+
+  const getUser = await UserModel.findById(User.id);
+
+  return res.status(200).json(getUser);
+};
+
+module.exports.logoutUser = async (req, res) => {
+  res.clearCookie("token");
+  return res.status(200).json({
+    msg: "User logged out successfully",
+  });
+};
