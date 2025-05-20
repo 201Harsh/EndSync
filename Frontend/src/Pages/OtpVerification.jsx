@@ -174,7 +174,6 @@ const OTPVerification = () => {
               Change email address
             </Link>
           </div>
-          w
         </div>
       </div>
     </div>

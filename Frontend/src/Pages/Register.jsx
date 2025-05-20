@@ -4,6 +4,8 @@ import {
   EnvelopeIcon,
   LockClosedIcon,
   ArrowRightCircleIcon,
+  EyeIcon,
+  EyeSlashIcon
 } from "@heroicons/react/20/solid";
 import React from "react";
 import { useState } from "react";
@@ -15,6 +17,7 @@ const Register = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const Navigate = useNavigate();
 
@@ -48,7 +51,7 @@ const Register = () => {
       });
 
       const errors = error.response.data.errors;
-      if (
+      if (errors) {
         errors.forEach((e) => {
           toast.error(e.msg, {
             position: "top-right",
@@ -61,8 +64,8 @@ const Register = () => {
             theme: "dark",
             transition: Bounce,
           });
-        })
-      );
+        });
+      }
     }
   };
 
@@ -80,7 +83,7 @@ const Register = () => {
       <div className="flex flex-col-reverse md:flex-row items-center justify-center h-full md:h-screen p-2">
         {/* Left Side - Graphic */}
         <div className="md:w-1/2 flex flex-col items-center justify-center mb-10 md:mt-0 mt-10 md:mb-0">
-          <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
+          <div className="w-24 h-24 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
             <div className="w-full h-full bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
               <img
                 src="/harsh.jpg"
@@ -176,15 +179,27 @@ const Register = () => {
                     <LockClosedIcon className="h-5 w-5 text-gray-400" />
                   </div>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
                     required
                     value={password}
                     onChange={(e) => setpassword(e.target.value)}
-                    className="w-full pl-10 pr-3 py-2.5 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                    className="w-full pl-10 pr-10 py-2.5 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                     placeholder="••••••••"
                   />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-300 transition-colors"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <EyeSlashIcon className="h-5 w-5" />
+                    ) : (
+                      <EyeIcon className="h-5 w-5" />
+                    )}
+                  </button>
                 </div>
               </div>
 
