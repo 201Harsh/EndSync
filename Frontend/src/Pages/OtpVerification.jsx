@@ -57,6 +57,40 @@ const OTPVerification = () => {
     }
   };
 
+  const handleOtpResend = async () => {
+    try {
+      const response = await AxiosInstance.post("/users/resend-otp", {
+        email : email,
+      });
+      if (response.status === 200) {
+        toast.success(response.data.msg, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(error.response.data.error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const enteredOtp = otp.join("");
@@ -150,8 +184,9 @@ const OTPVerification = () => {
             <div className="text-center text-sm text-gray-400">
               Didn't receive code?{" "}
               <button
+                onClick={handleOtpResend}
                 type="button"
-                className="font-medium text-indigo-400 hover:text-indigo-300 hover:underline transition-colors"
+                className="font-medium cursor-pointer text-indigo-400 hover:text-indigo-300 hover:underline transition-colors"
               >
                 Resend
               </button>
