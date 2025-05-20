@@ -1,89 +1,107 @@
-# EndSync User Authentication Guide
+# 🔒 EndSync Authentication System
 
-Welcome to the **EndSync** authentication system. This guide covers user registration, OTP verification, login, and logout functionalities.
-
----
-
-## Features
-
-- **User Registration**  
-    Secure sign-up with email and password.
-
-- **OTP Verification**  
-    Email-based One-Time Password (OTP) verification for account activation.
-
-- **User Login**  
-    Authenticate with verified credentials.
-
-- **User Logout**  
-    Securely end user sessions.
+A secure and seamless authentication solution for modern applications.  
+**EndSync** provides robust user registration, OTP verification, login, and logout functionalities with enterprise-grade security.
 
 ---
 
-## 1. Registering a User
+## ✨ Core Features
 
-1. **Navigate to Registration Page:**  
-     Go to `/register` or click the "Sign Up" button.
-
-2. **Fill Registration Form:**  
-     - Enter your email address.
-     - Create a strong password.
-     - Confirm your password.
-
-3. **Submit:**  
-     Click the "Register" button.  
-     You will receive an OTP on your registered email.
+| Feature                  | Description                                                               |
+| ------------------------ | ------------------------------------------------------------------------- |
+| 📝 **User Registration** | Secure sign-up with email + password validation (6+ chars, special chars) |
+| 🔐 **OTP Verification**  | ⏳ Time-sensitive (5 min), email-based 6-digit One-Time Password          |
+| 🔑 **User Login**        | JWT-based authentication with brute-force protection (5-attempt lockout)  |
+| 🚪 **User Logout**       | Instant session termination + token revocation                            |
+| 🛡️ **Security**          | BCrypt hashing (10 rounds) + HTTPS enforcement + PII protection           |
 
 ---
 
-## 2. Verifying Account via OTP
+## 🚀 Getting Started
 
-1. **Check Your Email:**  
-     Look for an email from EndSync containing your OTP.
+### 1. User Registration
 
-2. **Enter OTP:**  
-     - Go to the OTP verification page (`/verify-otp`).
-     - Input the OTP received.
+**Step 1:** Navigate to `/register`  
+**Step 2:** Complete the registration form:
 
-3. **Verify:**  
-     Click "Verify".  
-     If successful, your account is now active.
+- Valid email address
+- Strong password (min. 6 chars, mixed case, special characters)
+- Password confirmation
+
+**Step 3:** Submit → OTP will be sent to your email
+
+```mermaid
+%% Register User Flow
+flowchart TD
+    A([Start]) --> B[Display Registration Form]
+    B --> C{Form Valid?}
+
+    C -->|Yes| D[Send OTP to Email]
+    C -->|No| E[Show Validation Errors]
+    E --> B
+
+    D --> F[Store User Data Temporarily]
+    F --> G[Display OTP Verification Page]
+
+    G --> H{User Submits OTP?}
+    H -->|Yes| I[Validate OTP]
+    H -->|No| G
+
+    I --> J{OTP Valid?}
+    J -->|Yes| K[Create Permanent User Account]
+    J -->|No| L[Show Invalid OTP Error]
+    L --> G
+
+    K --> M[Send Welcome Email]
+    M --> N[Redirect to Dashboard]
+    N --> O([End])
+
+    style A fill:#4CAF50,stroke:#388E3C
+    style O fill:#4CAF50,stroke:#388E3C
+    style K fill:#2196F3,stroke:#0b7dda
+    style D fill:#FFC107,stroke:#FFA000
+    style I fill:#FFC107,stroke:#FFA000
+    style E fill:#F44336,stroke:#d32f2f
+    style L fill:#F44336,stroke:#d32f2f
+```
 
 ---
 
-## 3. Logging In
+### 2. OTP Verification
 
-1. **Navigate to Login Page:**  
-     Go to `/login`.
+**Step 1:** Locate the 6-digit OTP in your inbox  
+**Step 2:** Access `/verify-otp`  
+**Step 3:** Enter OTP and verify
 
-2. **Enter Credentials:**  
-     - Email address
-     - Password
-
-3. **Submit:**  
-     Click "Login".  
-     Upon success, you will be redirected to your dashboard.
+> ⏳ OTPs expire in 5 minutes for security Purpose
 
 ---
 
-## 4. Logging Out
+### 3. User Login
 
-1. **Click Logout:**  
-     Use the "Logout" button in the navigation bar or user menu.
+```http
+POST /login
+Content-Type: application/json
 
-2. **Session Ended:**  
-     You will be securely logged out and redirected to the login page.
+{
+  "email": "user@example.com",
+  "password": "SecurePass123!"
+}
+```
 
----
+## 🔐 Security Architecture
 
-## Security Notes
+- Layer Protection
+- Password Storage BCrypt hashing (10 rounds)
+- OTP Handling Time-based (TOTP), single-use
+- Brute Force 5-attempt lockout (30 min cooldown)
+- Session Management JWT with 24h expiration
 
-- Passwords are securely hashed.
-- OTPs expire after a limited time for enhanced security.
-- Multiple failed login attempts may result in temporary account lockout.
+## 🆘 Support
 
----
+**For any issues, please contact our security team:**
 
-For support, contact [support@endsync.com](mailto:support@endsync.com).
+- 📧 security@endsync.com
+- 🔒 PGP Key
 
 ---
