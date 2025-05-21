@@ -47,7 +47,6 @@ const Login = () => {
         setpassword("");
       }
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data.error, {
         position: "top-right",
         autoClose: 5000,

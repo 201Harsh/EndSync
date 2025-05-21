@@ -3,6 +3,10 @@ import {
   LockClosedIcon,
   ServerIcon,
   ArrowRightCircleIcon,
+  ShieldCheckIcon,
+  DevicePhoneMobileIcon,
+  ArrowsPointingOutIcon,
+  ChartBarIcon,
 } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
@@ -16,37 +20,43 @@ export default function Start() {
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5 flex items-center">
+            <Link to="/" className="-m-1.5 p-1.5 flex items-center">
               <CloudArrowUpIcon className="h-8 w-8 text-indigo-400" />
               <span className="ml-2 text-2xl font-bold text-white">
                 EndSync
               </span>
-            </a>
+            </Link>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+              href="#features"
+              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
             >
               Features
             </a>
             <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+              href="#pricing"
+              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
             >
               Pricing
             </a>
             <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+              href="#testimonials"
+              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
             >
-              Company
+              Testimonials
+            </a>
+            <a
+              href="#faq"
+              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
+            >
+              FAQ
             </a>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               to="/login"
-              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+              className="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
             >
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -56,6 +66,15 @@ export default function Start() {
 
       {/* Hero Section */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
+        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+          <div
+            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-500 to-purple-600 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            }}
+          />
+        </div>
         <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
@@ -69,25 +88,92 @@ export default function Start() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 to="/register"
-                href="#"
-                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 flex items-center"
+                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 flex items-center transition-colors"
               >
                 Get started
                 <ArrowRightCircleIcon className="h-5 w-5 ml-2" />
               </Link>
-              <a
-                href="#"
-                className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+              <Link
+                to="#features"
+                className="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
               >
                 Learn more <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
+          </div>
+        </div>
+        <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+          <div
+            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-indigo-500 to-purple-600 opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Industries Section */}
+      <div className="bg-gray-900 py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">
+            Powering innovation across industries
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-300">
+            Trusted by teams in diverse sectors to secure and manage their
+            critical data
+          </p>
+
+          <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
+            {[
+              {
+                icon: "💻",
+                name: "Tech Startups",
+                desc: "Secure code repositories",
+              },
+              {
+                icon: "🏥",
+                name: "Healthcare",
+                desc: "HIPAA-compliant storage",
+              },
+              { icon: "🎓", name: "Education", desc: "Research collaboration" },
+              { icon: "💰", name: "Finance", desc: "Encrypted transactions" },
+              { icon: "🎨", name: "Creative", desc: "Asset management" },
+              { icon: "⚖️", name: "Legal", desc: "Client document portal" },
+              { icon: "🔬", name: "Research", desc: "Data preservation" },
+              { icon: "🌎", name: "Nonprofits", desc: "Global team access" },
+              { icon: "🏗️", name: "Engineering", desc: "CAD file sharing" },
+              { icon: "📱", name: "Mobile Apps", desc: "User data sync" },
+            ].map((industry) => (
+              <div
+                key={industry.name}
+                className="group flex flex-col items-center text-center"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 text-2xl transition-all duration-300 group-hover:bg-indigo-500 group-hover:text-white">
+                  {industry.icon}
+                </div>
+                <h3 className="mt-4 text-lg font-medium text-white">
+                  {industry.name}
+                </h3>
+                <p className="mt-1 text-sm text-gray-400">{industry.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link
+              to="/register"
+              className="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors"
+            >
+              View customer stories
+              <ArrowRightCircleIcon className="ml-2 h-5 w-5" />
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="bg-gray-900 py-24 sm:py-32">
+      <div id="features" className="bg-gray-900 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <h2 className="text-base font-semibold leading-7 text-indigo-400">
@@ -151,20 +237,10 @@ export default function Start() {
               <div className="relative pl-16">
                 <dt className="text-base font-semibold leading-7 text-white">
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
+                    <DevicePhoneMobileIcon
                       className="h-6 w-6 text-white"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                      />
-                    </svg>
+                      aria-hidden="true"
+                    />
                   </div>
                   Cross-platform sync
                 </dt>
@@ -178,6 +254,355 @@ export default function Start() {
         </div>
       </div>
 
+      {/* Stats Section */}
+      <div className="bg-gray-800 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:max-w-none">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Trusted by users worldwide
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-gray-300">
+                Join millions of users who trust EndSync with their important
+                files and data.
+              </p>
+            </div>
+            <div className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+              <div className="flex flex-col bg-gray-700/50 p-8">
+                <dt className="text-sm font-semibold leading-6 text-gray-300">
+                  Files stored
+                </dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-white">
+                  10M+
+                </dd>
+              </div>
+              <div className="flex flex-col bg-gray-700/50 p-8">
+                <dt className="text-sm font-semibold leading-6 text-gray-300">
+                  Daily users
+                </dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-white">
+                  500K+
+                </dd>
+              </div>
+              <div className="flex flex-col bg-gray-700/50 p-8">
+                <dt className="text-sm font-semibold leading-6 text-gray-300">
+                  Uptime
+                </dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-white">
+                  99.99%
+                </dd>
+              </div>
+              <div className="flex flex-col bg-gray-700/50 p-8">
+                <dt className="text-sm font-semibold leading-6 text-gray-300">
+                  Countries
+                </dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-white">
+                  150+
+                </dd>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div id="testimonials" className="bg-gray-900 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              What our users say
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Hear from our satisfied customers about their experience with
+              EndSync.
+            </p>
+          </div>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "CTO, TechCorp",
+                imageSrc:
+                  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80",
+                quote:
+                  "EndSync has transformed how our team collaborates. The security features give us peace of mind while the intuitive interface keeps everyone productive.",
+              },
+              {
+                name: "Michael Chen",
+                role: "Freelance Designer",
+                imageSrc:
+                  "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80",
+                quote:
+                  "As a designer, I need to access my files from multiple devices. EndSync makes this seamless while keeping my work secure.",
+              },
+              {
+                name: "Emma Rodriguez",
+                role: "Marketing Director",
+                imageSrc:
+                  "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80",
+                quote:
+                  "The cross-platform sync is flawless. I can start a presentation on my laptop and finish it on my phone during my commute.",
+              },
+            ].map((testimonial) => (
+              <div
+                key={testimonial.name}
+                className="flex flex-col bg-gray-800/50 p-8 rounded-xl border border-gray-700"
+              >
+                <div className="flex items-center gap-x-4">
+                  <img
+                    className="h-12 w-12 rounded-full object-cover"
+                    src={testimonial.imageSrc}
+                    alt=""
+                  />
+                  <div className="text-left">
+                    <h3 className="text-lg font-semibold leading-7 text-white">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm leading-6 text-gray-400">
+                      {testimonial.role}
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-6 text-base leading-7 text-gray-300">
+                  "{testimonial.quote}"
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Pricing Section */}
+      <div id="pricing" className="bg-gray-800 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Simple, transparent pricing
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Choose the perfect plan for your needs. No hidden fees, ever.
+            </p>
+          </div>
+          <div className="mt-16 flex justify-center">
+            <div className="grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-3">
+              {[
+                {
+                  name: "Starter",
+                  price: "Free",
+                  description: "Perfect for individuals getting started",
+                  features: [
+                    "5GB storage",
+                    "Basic file sharing",
+                    "2 device sync",
+                    "Standard security",
+                  ],
+                  cta: "Get started",
+                },
+                {
+                  name: "Professional",
+                  price: "$9.99",
+                  period: "/month",
+                  description: "For professionals and small teams",
+                  features: [
+                    "100GB storage",
+                    "Advanced sharing",
+                    "5 device sync",
+                    "Enhanced security",
+                    "Priority support",
+                  ],
+                  cta: "Start free trial",
+                  featured: true,
+                },
+                {
+                  name: "Enterprise",
+                  price: "Custom",
+                  description: "For organizations with advanced needs",
+                  features: [
+                    "Unlimited storage",
+                    "Advanced controls",
+                    "Unlimited devices",
+                    "Enterprise-grade security",
+                    "Dedicated support",
+                    "Custom integrations",
+                  ],
+                  cta: "Contact sales",
+                },
+              ].map((tier) => (
+                <div
+                  key={tier.name}
+                  className={`flex flex-col rounded-2xl border p-8 ${
+                    tier.featured
+                      ? "border-indigo-500 bg-gray-900/50"
+                      : "border-gray-700 bg-gray-900/30"
+                  }`}
+                >
+                  <h3 className="text-lg font-semibold leading-8 text-white">
+                    {tier.name}
+                  </h3>
+                  <div className="mt-4 flex items-baseline gap-x-2">
+                    <span className="text-4xl font-bold tracking-tight text-white">
+                      {tier.price}
+                    </span>
+                    {tier.period && (
+                      <span className="text-sm font-semibold leading-6 text-gray-300">
+                        {tier.period}
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-gray-300">
+                    {tier.description}
+                  </p>
+                  <ul
+                    role="list"
+                    className="mt-8 space-y-3 text-sm leading-6 text-gray-300"
+                  >
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex gap-x-3">
+                        <svg
+                          className="h-6 w-5 flex-none text-indigo-500"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/register"
+                    className={`mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 ${
+                      tier.featured
+                        ? "bg-indigo-500 text-white hover:bg-indigo-400"
+                        : "text-white ring-1 ring-inset ring-gray-700 hover:ring-gray-600"
+                    }`}
+                  >
+                    {tier.cta}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div id="faq" className="bg-gray-900 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Frequently asked questions
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Have questions? We've got answers.
+            </p>
+          </div>
+          <div className="mt-16 mx-auto max-w-2xl divide-y divide-gray-700">
+            {[
+              {
+                question: "How secure is EndSync?",
+                answer:
+                  "EndSync uses industry-leading encryption standards to protect your files. All data is encrypted both in transit and at rest, and we never store your encryption keys on our servers.",
+              },
+              {
+                question: "Can I access my files offline?",
+                answer:
+                  "Yes! With our desktop and mobile apps, you can mark files for offline access. Any changes will sync automatically when you reconnect to the internet.",
+              },
+              {
+                question: "What happens if I exceed my storage limit?",
+                answer:
+                  "You'll receive a notification and can either upgrade your plan or delete files to free up space. Your existing files remain accessible even if you exceed your limit.",
+              },
+              {
+                question: "How do I share files with others?",
+                answer:
+                  "You can generate shareable links with customizable permissions, or invite collaborators directly to folders with different access levels (view, edit, etc.).",
+              },
+            ].map((faq, index) => (
+              <div key={index} className="py-6">
+                <details className="group">
+                  <summary className="flex cursor-pointer items-center justify-between">
+                    <h3 className="text-lg font-semibold leading-7 text-white">
+                      {faq.question}
+                    </h3>
+                    <svg
+                      className="h-5 w-5 flex-none text-gray-400 group-open:rotate-180"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </summary>
+                  <p className="mt-3 text-base leading-7 text-gray-400">
+                    {faq.answer}
+                  </p>
+                </details>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-gray-800">
+        <div className="mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8">
+          <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl rounded-2xl sm:px-16">
+            <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Ready to secure your files?
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
+              Join millions of users who trust EndSync with their important
+              documents and memories.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Link
+                to="/register"
+                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 flex items-center transition-colors"
+              >
+                Get started
+                <ArrowRightCircleIcon className="h-5 w-5 ml-2" />
+              </Link>
+              <Link
+                to="#pricing"
+                className="text-sm font-semibold leading-6 text-white"
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+            <svg
+              viewBox="0 0 1024 1024"
+              className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+              aria-hidden="true"
+            >
+              <circle
+                cx={512}
+                cy={512}
+                r={512}
+                fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)"
+                fillOpacity="0.7"
+              />
+              <defs>
+                <radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
+                  <stop stopColor="#7C3AED" />
+                  <stop offset={1} stopColor="#4F46E5" />
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="bg-gray-900 border-t border-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-12">
@@ -187,6 +612,7 @@ export default function Start() {
               <a
                 href="https://www.instagram.com/201harshs/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-indigo-400 transition-colors"
               >
                 <span className="sr-only">Instagram</span>
@@ -257,6 +683,8 @@ export default function Start() {
                 Made with ❤️ by{" "}
                 <a
                   href="https://www.instagram.com/201harshs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-indigo-400 transition-colors"
                 >
                   Harsh
