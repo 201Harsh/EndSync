@@ -192,7 +192,7 @@ module.exports.verifyandRegisterUser = async (req, res) => {
     });
 
     return res.status(200).json({
-      msg: "User registered successfully",
+      msg: "Registering User...",
       User,
       token,
     });
@@ -237,7 +237,7 @@ module.exports.loginUser = async (req, res) => {
   });
 
   return res.status(200).json({
-    msg: "User logged in successfully",
+    msg: "Logging In...",
     User,
     token,
   });
@@ -254,7 +254,7 @@ module.exports.getProfile = async (req, res) => {
 module.exports.logoutUser = async (req, res) => {
   res.clearCookie("token");
   return res.status(200).json({
-    msg: "User logged out successfully",
+    msg: "Logging Out...",
   });
 };
 
