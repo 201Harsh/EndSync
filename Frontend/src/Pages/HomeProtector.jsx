@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AxiosInstance from "../Config/Axios";
 import { Bounce, toast } from "react-toastify";
+import Loader from "../Animations/Loader";
 
 const HomeProtector = ({ children }) => {
   const Navigate = useNavigate();
+  const [IsLoading, setIsLoading] = useState(true);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const checkUser = async () => {
       if (!token) {
-        Navigate("/home");
+        Navigate("/");
         return;
       }
 
@@ -21,8 +23,12 @@ const HomeProtector = ({ children }) => {
           },
         });
 
+        localStorage.setItem("name", res.data.name);
+
         if (res.status === 200) {
-          Navigate("/home");
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 5000);
         } else {
           localStorage.removeItem("token");
           Navigate("/register");
@@ -44,6 +50,14 @@ const HomeProtector = ({ children }) => {
 
     checkUser();
   }, [token, Navigate]);
+
+  if (IsLoading) {
+    return (
+      <>
+        <Loader />
+      </>
+    );
+  }
 
   return <>{children}</>;
 };
