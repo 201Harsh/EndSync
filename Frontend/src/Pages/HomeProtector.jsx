@@ -17,11 +17,7 @@ const HomeProtector = ({ children }) => {
       }
 
       try {
-        const res = await AxiosInstance.get("/users/getProfile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await AxiosInstance.get("/users/getProfile");
 
         localStorage.setItem("name", res.data.name);
 

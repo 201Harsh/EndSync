@@ -6,12 +6,13 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import OTPVerification from "../Pages/OtpVerification";
 import HomeProtector from "../Pages/HomeProtector";
+import AutoRedirector from "../Pages/AutoRedirector";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Start />} />
+        <Route path="/" element={<AutoRedirector />} />
         <Route
           path="/home"
           element={
